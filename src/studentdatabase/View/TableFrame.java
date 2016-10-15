@@ -29,11 +29,11 @@ public class TableFrame extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         DisplayTable = new javax.swing.JTable();
-        BtnAdd = new javax.swing.JButton();
-        BtnEdit = new javax.swing.JButton();
-        BtnDelete = new javax.swing.JButton();
-        BtnList = new javax.swing.JButton();
-        BtnExit = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,15 +50,15 @@ public class TableFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(DisplayTable);
 
-        BtnAdd.setText("Add");
+        btnAdd.setText("Add");
 
-        BtnEdit.setText("Edit");
+        btnEdit.setText("Edit");
 
-        BtnDelete.setText("Delete");
+        btnDelete.setText("Delete");
 
-        BtnList.setText("List");
+        btnList.setText("List");
 
-        BtnExit.setText("Exit");
+        btnExit.setText("Exit");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,15 +69,15 @@ public class TableFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtnAdd)
+                        .addComponent(btnAdd)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnEdit)
+                        .addComponent(btnEdit)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnDelete)
+                        .addComponent(btnDelete)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnList)
+                        .addComponent(btnList)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnExit)))
+                        .addComponent(btnExit)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,11 +87,11 @@ public class TableFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAdd)
-                    .addComponent(BtnEdit)
-                    .addComponent(BtnDelete)
-                    .addComponent(BtnList)
-                    .addComponent(BtnExit))
+                    .addComponent(btnAdd)
+                    .addComponent(btnEdit)
+                    .addComponent(btnDelete)
+                    .addComponent(btnList)
+                    .addComponent(btnExit))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -134,12 +134,12 @@ public class TableFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAdd;
-    private javax.swing.JButton BtnDelete;
-    private javax.swing.JButton BtnEdit;
-    private javax.swing.JButton BtnExit;
-    private javax.swing.JButton BtnList;
     private javax.swing.JTable DisplayTable;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnList;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
