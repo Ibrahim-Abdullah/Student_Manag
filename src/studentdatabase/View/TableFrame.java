@@ -5,6 +5,9 @@
  */
 package studentdatabase.View;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author jobmwesigwa
@@ -132,7 +135,25 @@ public class TableFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    public JButton getAddButton(){
+        return BtnAdd;
+    }
+    
+    public JButton getEditButton(){
+        return BtnEdit;
+    }
+    public JButton getListButton(){
+        return BtnList;
+    }
+    public JButton getExitButton(){
+        return BtnExit;
+    }
+    public JTable getTable(){
+        return DisplayTable;
+    }
+    public JButton getDeleteButton(){
+        return BtnDelete;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAdd;
     private javax.swing.JButton BtnDelete;
