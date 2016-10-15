@@ -55,7 +55,7 @@ public class TableFrameController implements ActionListener{
         if (ae.getActionCommand().equals("Add")){
             //MyTableModel m=MyTableModel.getInstance();
             AddStudent v= new AddStudent(null, true);            
-            AddStudentController cntroller= new AddStudentController();            
+            AddStudentController cntroller= new AddStudentController(v);            
             //cntroller.control();            
             //v.setVisible(true);
             

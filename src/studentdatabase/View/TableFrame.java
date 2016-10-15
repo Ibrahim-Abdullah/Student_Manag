@@ -136,23 +136,23 @@ public class TableFrame extends javax.swing.JFrame {
         });
     }
     public JButton getAddButton(){
-        return BtnAdd;
+        return btnAdd;
     }
     
     public JButton getEditButton(){
-        return BtnEdit;
+        return btnEdit;
     }
     public JButton getListButton(){
-        return BtnList;
+        return btnList;
     }
     public JButton getExitButton(){
-        return BtnExit;
+        return btnExit;
     }
     public JTable getTable(){
         return DisplayTable;
     }
     public JButton getDeleteButton(){
-        return BtnDelete;
+        return btnDelete;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisplayTable;

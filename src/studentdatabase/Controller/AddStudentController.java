@@ -18,8 +18,9 @@ public class AddStudentController implements ActionListener{
     //MyTableModel model;
     //I have not been consistent in view & model naming. 
     //should be addNewForm etc.
-    public AddNewFormController(MyTableModel myTableModel, AddNewForm addStudent) {
+    public AddStudentController( AddStudent addStudent) {
         view =addStudent;
+        //MyTableModel myTableModel,
         //model= myTableModel;        
     }
     public void control(){
