@@ -10,7 +10,9 @@ package studentdatabase.View;
  * @author jobmwesigwa
  */
 
+import java.awt.Button;
 import javax.swing.JButton;
+import javax.swing.JTable;
 public class StudentDetails extends javax.swing.JDialog {
 
     /**
@@ -201,7 +203,33 @@ public class StudentDetails extends javax.swing.JDialog {
             }
         });
     }
+       public Button getAddButton(){
+        return btnAdd;
+    }
 
+    public Button getCloseButton(){
+        return btnExit;
+    }
+   public Button getEditButton(){
+        return btnExit;
+    }
+    public String getSurname(){  //another fxn getName() exists!
+        return surname.getText();
+    }
+    
+  public String getFirstname(){  //another fxn getName() exists!
+        return firstName.getText();
+    }
+    public String getGPA(){
+        return gpa.getText();
+    }
+    public String getMajor(){
+        return majors.getSelectedItem().toString();
+    }
+    public String getAdmissionYear(){
+        return AddmissionYear.getText();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.TextField AddmissionYear;
     private java.awt.Button btnAdd;
