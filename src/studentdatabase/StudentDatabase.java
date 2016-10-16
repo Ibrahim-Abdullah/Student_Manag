@@ -5,6 +5,10 @@
  */
 package studentdatabase;
 
+import studentdatabase.Controller.TableFrameController;
+import studentdatabase.Model.StudentTableModel;
+import studentdatabase.View.TableFrame;
+
 /**
  *
  * @author Ibrahim-Abdullah
@@ -15,7 +19,10 @@ public class StudentDatabase {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        StudentTableModel m=StudentTableModel.getInstance();
+        TableFrame v= new TableFrame();
+        TableFrameController tvc= new TableFrameController(m,v);
+        tvc.control(); 
     }
     
 }
