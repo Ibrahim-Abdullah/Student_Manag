@@ -6,11 +6,14 @@
 package studentdatabase.Controller;
 
 import studentdatabase.View.TableFrame;
-import studentdatabase.View.AddStudent;
-import studentdatabase.Controller.AddStudentController;
+import studentdatabase.Model.StudentTableModel;
 import studentdatabase.View.StudentDetails;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.table.TableModel;
+import studentdatabase.Model.Student;
+import studentdatabase.View.UpdatedialoguePopUp;
 
 /**
  *
@@ -18,14 +21,13 @@ import java.awt.event.ActionListener;
  */
 public class TableFrameController implements ActionListener{
     TableFrame tableView;
-    //StudentTableModel myTableModel;
+    StudentTableModel studentTableModel;
     ActionListener actionListener;
     
-    public TableFrameController(TableFrame tableView){
-        /*MyTableModel StudentTableModel )*/
+    public TableFrameController(StudentTableModel studentTableModel, TableFrame tableView){
         this.tableView= tableView;
-        //this.myTableModel=myTableModel;  
-        //tableView.getTable().setModel(myTableModel);
+        this.studentTableModel=studentTableModel;  
+        tableView.getTable().setModel((TableModel) studentTableModel);
     }
     
     //this illustrates how both approaches for event handling are accomplished
@@ -37,10 +39,8 @@ public class TableFrameController implements ActionListener{
         tableView.getDeleteButton().addActionListener(this);
                 
         //this uses an anonymous class to handle one of the buttons
-        actionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {                  
-                  System.exit(0);
-              }
+        actionListener = (ActionEvent actionEvent) -> {
+            System.exit(0);
         };                
         tableView.getExitButton().addActionListener(actionListener);   
         
@@ -53,28 +53,31 @@ public class TableFrameController implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         //following method wont work if btn text is changed.
         if (ae.getActionCommand().equals("Add")){
-            //MyTableModel m=MyTableModel.getInstance();
-            AddStudent v= new AddStudent(null, true);            
-            AddStudentController cntroller= new AddStudentController(v);            
-            //cntroller.control();            
-            //v.setVisible(true);
+            StudentTableModel m=StudentTableModel.getInstance();
+            StudentDetails v= new StudentDetails(null, true);            
+            AddStudentController cntroller= new AddStudentController(m,v);            
+            cntroller.control();            
+            v.setVisible(true);
             
         }
         if (ae.getActionCommand().equals("Print")){
-           /* //poorly written fxn. type conversions shd be in model
-            Object [] tmp=myTableModel.getList().toArray();
-            Student s;
-            for (int i = 0; i < tmp.length; i++) {
-                
-                s=(Student)tmp[i];
-                System.out.println(s.toString());                
-            }
-            */
-        }
-        //comparing with the actual btn
-        //if (ae.getSource()== tableView.getDetailButton()){
             
-        //}
+            
+            //Dereck should provid getter method for getting a reference to 
+            //the list of student in the table model
+            ArrayList<Student> tmp=studentTableModel.getList().toArray();
+            for(Student stud: tmp){
+                System.out.println(stud.toString());
+            }
+        }
+        if(ae.getActionCommand().equals("Edit")){
+            StudentTableModel m=StudentTableModel.getInstance();
+            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);            
+            UpdateStudentController cntroller= new UpdateStudentController(m,v);            
+            cntroller.control();            
+            v.setVisible(true);
+        }
+        
         
     }
 }
