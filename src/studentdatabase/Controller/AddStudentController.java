@@ -7,21 +7,23 @@ package studentdatabase.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import studentdatabase.View.AddStudent;
+import javax.swing.JOptionPane;
+import studentdatabase.View.StudentDetails;
+import studentdatabase.Model.StudentTableModel;  
+import studentdatabase.Model.Student;
+
 /**
  *
  * @author Ibrahim-Abdullah
  */
 public class AddStudentController implements ActionListener{
     
-    AddStudent view; 
-    //MyTableModel model;
-    //I have not been consistent in view & model naming. 
-    //should be addNewForm etc.
-    public AddStudentController( AddStudent addStudent) {
-        view =addStudent;
-        //MyTableModel myTableModel,
-        //model= myTableModel;        
+    StudentDetails view; 
+    StudentTableModel model;
+
+    public AddStudentController( StudentTableModel studentTableModel,StudentDetails addStudentForm) {
+        view =addStudentForm;
+        model= studentTableModel;        
     }
     public void control(){
         view.getAddButton().addActionListener(this);
@@ -36,17 +38,70 @@ public class AddStudentController implements ActionListener{
         }
         if (ae.getActionCommand().equalsIgnoreCase("Add"))
         {     
-            /*
-            //fetch the data into a student.
-            //I can have a separate fxn in the model to simply receive
-            //the individual elemnets instead of a stuent object
-            Student s= new Student();
-            s.Surname= view.getFullName();
-            s.Major=view.getMajor();
-            s.WASSCE=Integer.parseInt(view.getWASCE());
-            s.age=Integer.parseInt(view.getAge());
-            model.addToModel(s);  
-            */
+        boolean success = fieldValidation();
+        if(success){
+            String sID = view.getStudentID();
+            String fName = view.getFirstname();
+            String sName = view.getSurname();
+            int yAdmission = Integer.parseInt(view.getAdmissionYear());
+            float gpA = Float.parseFloat(view.getGPA());
+            String programOfStudy = view.getMajor();
+            
+            Student newStudent = new Student();
+            
+            newStudent.setFirstname(fName);
+            newStudent.setStudentID(sID);
+            newStudent.setSurname(sName);
+            newStudent.setProgram(programOfStudy);
+            newStudent.setgpa(gpA);
+            newStudent.setadmissionYear(yAdmission);
+            
+            //model.addToModel(newStudent);  
+            JOptionPane.showMessageDialog(null,"Student record succesfully inserted");
+            view.resetField();
         }
+        else{
+            JOptionPane.showMessageDialog(null,"Student Record NOT inserted");
+        }
+    }
+ }
+    
+ private Boolean fieldValidation(){
+        boolean success = false;
+        try{
+            //long id = new Long(studentId).longValue();
+            long id = Long.parseLong(view.getStudentID());
+            success = true;
+            //Check if Year of Admission is of the format
+            try{
+                int yAdmission = Integer.parseInt(view.getAdmissionYear());
+                success = true;
+                try{
+                    float _gpa  = Float.parseFloat(view.getGPA());
+                    success = true;
+                    
+                }
+                catch(NumberFormatException e){
+                    success = false;
+                    JOptionPane.showMessageDialog(null,"Incorrect GPA Format");
+                }
+            }
+            catch(NumberFormatException e){
+                success = false;
+            JOptionPane.showMessageDialog(null,"Incorrect Year of Admission Format");
+            }
+            if(view.getMajor().toString().equalsIgnoreCase("Select Program of Study")){
+                success = false;
+                JOptionPane.showMessageDialog(null,"Select Program of Study");
+            }
+            else{
+                success = true;
+            }
+        }
+        catch(NumberFormatException e){
+            success = false;
+            JOptionPane.showMessageDialog(null,"Incorrect Student ID format"); 
+        }
+        return success;
     }
 }
