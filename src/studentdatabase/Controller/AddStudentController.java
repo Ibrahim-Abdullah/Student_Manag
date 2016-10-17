@@ -39,7 +39,8 @@ public class AddStudentController implements ActionListener{
         if (ae.getSource()==view.getCloseButton() )
         {               
         view.dispose();
-        StudentTableModel m=model.getInstance();
+        
+        StudentTableModel m= new StudentTableModel();
         TableFrame v= new TableFrame();
         TableFrameController tvc= new TableFrameController(m,v);
         tvc.control();
@@ -84,14 +85,25 @@ public class AddStudentController implements ActionListener{
         try{
             //long id = new Long(studentId).longValue();
             long id = Long.parseLong(view.getStudentID());
-            success = true;
+            if(id <= 0){
+                    JOptionPane.showMessageDialog(null,"Incorrect Student ID format");
+                }
             //Check if Year of Admission is of the format
             try{
                 int yAdmission = Integer.parseInt(view.getAdmissionYear());
-                success = true;
+                if(yAdmission <= 0){
+                    JOptionPane.showMessageDialog(null,"Incorrect Year of Admission Format");
+                }
+                
                 try{
                     float _gpa  = Float.parseFloat(view.getGPA());
+                    if(_gpa < 0.0){
+                        success =false;
+                        JOptionPane.showMessageDialog(null,"Incorrect GPA Format");
+                    }
+                    else{
                     success = true;
+                    }
                     
                 }
                 catch(NumberFormatException e){

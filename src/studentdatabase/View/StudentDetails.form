@@ -51,7 +51,7 @@
                                   <Component id="surname" alignment="0" max="32767" attributes="0"/>
                                   <Component id="firstName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="AddmissionYear" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="gpa" alignment="0" pref="147" max="32767" attributes="0"/>
+                                  <Component id="gpa" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -178,13 +178,14 @@
     <Component class="javax.swing.JComboBox" name="majors">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="CS"/>
-            <StringItem index="1" value="BA"/>
-            <StringItem index="2" value="MIS"/>
-            <StringItem index="3" value="EE"/>
-            <StringItem index="4" value="ME"/>
-            <StringItem index="5" value="CE"/>
+          <StringArray count="7">
+            <StringItem index="0" value="Select Program of Study"/>
+            <StringItem index="1" value="CS"/>
+            <StringItem index="2" value="BA"/>
+            <StringItem index="3" value="MIS"/>
+            <StringItem index="4" value="EE"/>
+            <StringItem index="5" value="ME"/>
+            <StringItem index="6" value="CE"/>
           </StringArray>
         </Property>
       </Properties>

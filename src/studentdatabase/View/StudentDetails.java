@@ -67,7 +67,7 @@ public class StudentDetails extends javax.swing.JDialog {
 
         btnExit.setLabel("Exit");
 
-        majors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "BA", "MIS", "EE", "ME", "CE" }));
+        majors.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Program of Study", "CS", "BA", "MIS", "EE", "ME", "CE" }));
 
         label7.setText("Please Enter the Student's Details");
 
@@ -103,7 +103,7 @@ public class StudentDetails extends javax.swing.JDialog {
                                     .addComponent(surname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(firstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(AddmissionYear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(gpa, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))))
+                                    .addComponent(gpa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(43, 43, 43))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(107, 107, 107)
