@@ -49,7 +49,7 @@ public class StudentDetails extends javax.swing.JDialog {
         gpa = new java.awt.TextField();
         label7 = new java.awt.Label();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         label1.setText("Student ID");
 

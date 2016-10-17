@@ -6,14 +6,15 @@
 package studentdatabase.View;
 
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import studentdatabase.Model.StudentTableModel;
 
 /**
  *
  * @author jobmwesigwa
  */
 public class TableFrame extends javax.swing.JFrame {
-
     /**
      * Creates new form TableFrame
      */
@@ -40,17 +41,6 @@ public class TableFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        DisplayTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(DisplayTable);
 
         btnAdd.setText("Add");

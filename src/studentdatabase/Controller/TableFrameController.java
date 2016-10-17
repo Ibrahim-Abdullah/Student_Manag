@@ -60,7 +60,7 @@ public class TableFrameController implements ActionListener{
             v.setVisible(true);
             
         }
-        if (ae.getActionCommand().equals("Print")){
+        if (ae.getActionCommand().equals("List")){
             
             
             //Dereck should provid getter method for getting a reference to 
@@ -72,8 +72,9 @@ public class TableFrameController implements ActionListener{
         }
         if(ae.getActionCommand().equals("Edit")){
             StudentTableModel m=StudentTableModel.getInstance();
-            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);            
-            UpdateStudentController cntroller= new UpdateStudentController(m,v);            
+            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);
+            StudentDetails sd = new StudentDetails(null,true);
+            UpdateStudentController cntroller= new UpdateStudentController(m,v,sd);            
             cntroller.control();            
             v.setVisible(true);
         }

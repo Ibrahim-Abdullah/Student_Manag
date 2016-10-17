@@ -10,12 +10,12 @@ package studentdatabase.Model;
  * @author derry
  */
 public class Student {
-    String studentID;
-    String surname;
-    String firstName;
-    int admissionYear;
-    float GPA;
-    Major program;
+    private String studentID;
+    private String surname;
+    private String firstName;
+    private int admissionYear;
+    private float GPA;
+    private Major program;
     
     public Student(){
     this.studentID = null;
@@ -69,8 +69,8 @@ public class Student {
     public void setProgram(String program){
         this.program = Major.valueOf(program);
     }
-    public String toStrings() {
-     String data = studentID + " " + firstName + " " + surname + " " + admissionYear + " " + GPA + " " + program + "\n";
+    public String toString() {
+     String data = this.studentID + " " + this.firstName + " " + this.surname + " " + this.admissionYear + " " + this.GPA + " " + this.program + "\n";
             return data ;
         }
  

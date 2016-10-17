@@ -25,9 +25,10 @@ public class UpdateStudentController implements ActionListener{
     StudentTableModel model;
     //I have not been consistent in view & model naming. 
     //should be addNewForm etc.
-    public UpdateStudentController(StudentTableModel studentTabelModel, UpdatedialoguePopUp updateForm){
+    public UpdateStudentController(StudentTableModel studentTabelModel, UpdatedialoguePopUp updateForm,StudentDetails addStudentForm){
         view =updateForm;
-        model= studentTabelModel;        
+        model= studentTabelModel; 
+        view2 = addStudentForm;
     }
     
     public void control(){
