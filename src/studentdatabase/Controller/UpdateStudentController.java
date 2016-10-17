@@ -89,11 +89,11 @@ public class UpdateStudentController implements ActionListener{
         try{
             //long id = new Long(studentId).longValue();
             long id = Long.parseLong(view2.getStudentID());
-            success = true;
+            //success = true;
             //Check if Year of Admission is of the format
             try{
                 int yAdmission = Integer.parseInt(view2.getAdmissionYear());
-                success = true;
+                //success = true;
                 try{
                     float _gpa  = Float.parseFloat(view2.getGPA());
                     success = true;
@@ -108,7 +108,7 @@ public class UpdateStudentController implements ActionListener{
                 success = false;
             JOptionPane.showMessageDialog(null,"Incorrect Year of Admission Format");
             }
-            if(view2.getMajor().toString().equalsIgnoreCase("Select Program of Study")){
+            if(view2.getMajor().equalsIgnoreCase("Select Program of Study")){
                 success = false;
                 JOptionPane.showMessageDialog(null,"Select Program of Study");
             }
