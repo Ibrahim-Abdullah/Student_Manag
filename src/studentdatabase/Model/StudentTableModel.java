@@ -43,10 +43,12 @@ public class StudentTableModel extends AbstractTableModel {
         return sList;
     }
 
+    @Override
     public int getColumnCount() {
         return colHeader.length;
     }
 
+    @Override
     public int getRowCount() {
         return sList.size();
     }
@@ -68,6 +70,16 @@ public class StudentTableModel extends AbstractTableModel {
             return ss.getProgram();
         }
         return ss;
+    }
+    
+    /**
+     *
+     * @param col
+     * @return
+     */
+    @Override
+    public String getColumnName(int col) {
+        return colHeader[col];//otherwise returns A, B, C etc
     }
 
     public void setValueAt(Object value, int row, int col) {
@@ -102,7 +114,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
 
             PreparedStatement ps = con.prepareStatement("Insert into studentdata set StudentID=?, firstName=?, Surname=?, AdmissionYear=?, "
                     + "GPA=?, Program=?");
@@ -113,10 +125,13 @@ public class StudentTableModel extends AbstractTableModel {
             ps.setFloat(5, gpa);
             ps.setString(6, major);
             System.out.println(ps.execute());
+            
         } catch (Exception e) {
             System.out.println("Error " + e.toString());
             return;
         }
+        
+        sModel.fireTableDataChanged();
     }
 
     public void updateRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
@@ -124,7 +139,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
             PreparedStatement ps = con.prepareStatement("update studentdata  set StudentID=?, firstName=?, Surname=?, AdmissionYear=?,"
                     + "GPA=?, Program=?");
             ps.setString(1, id);
@@ -147,7 +162,7 @@ public class StudentTableModel extends AbstractTableModel {
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
                     PreparedStatement ps = con.prepareStatement("delete from studentdata where StudentID=?");
                     ps.setString(1, stId);
                     System.out.println("Success: " + ps.execute());
@@ -164,7 +179,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection conn = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
 
             Statement s = conn.createStatement();
 
