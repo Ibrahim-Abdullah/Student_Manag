@@ -65,7 +65,7 @@ public class TableFrameController implements ActionListener{
             
             //Dereck should provid getter method for getting a reference to 
             //the list of student in the table model
-            ArrayList<Student> tmp=studentTableModel.getList().toArray();
+            ArrayList<Student> tmp =studentTableModel.getStudentArrayList();
             for(Student stud: tmp){
                 System.out.println(stud.toString());
             }

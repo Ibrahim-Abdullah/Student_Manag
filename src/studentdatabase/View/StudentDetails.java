@@ -210,8 +210,8 @@ public class StudentDetails extends javax.swing.JDialog {
     public Button getCloseButton(){
         return btnExit;
     }
-   public Button getEditButton(){
-        return btnExit;
+   public Button getUpdateButton(){
+        return btnEdit;
     }
     public String getSurname(){  //another fxn getName() exists!
         return surname.getText();
@@ -228,6 +228,54 @@ public class StudentDetails extends javax.swing.JDialog {
     }
     public String getAdmissionYear(){
         return AddmissionYear.getText();
+    }
+    public String getStudentID(){
+        return this.studentID.getText();
+    }
+    
+  public void resetField(){
+        studentID.setText(null);
+        surname.setText(null);
+        firstName.setText(null);
+        AddmissionYear.setText(null);
+        gpa.setText(null);
+        majors.setSelectedIndex(0);
+    }
+  
+  public void setStudentID(String studentID){
+      this.studentID.setText(studentID);
+  }
+   public void setSurname(String surname){
+      this.surname.setText(surname);
+  }
+    public void setFirstname(String firstname){
+      this.firstName.setText(firstname);
+  }
+     public void setAdmissionYear(Integer addmisionYear){
+      this.AddmissionYear.setText(Integer.toString(addmisionYear));
+  }
+      public void setGPA(Float gpa){
+      this.gpa.setText(Float.toString(gpa));
+  }
+      public void setMajor(String major){
+    if("CS".equalsIgnoreCase(major)){
+        majors.setSelectedIndex(1);
+    }
+    else if("BA".equalsIgnoreCase(major)){
+        majors.setSelectedIndex(2);
+    }
+    else if("MIS".equalsIgnoreCase(major)){
+        majors.setSelectedIndex(3);
+    }
+    else if("EE".equalsIgnoreCase(major)){
+        majors.setSelectedIndex(4);
+    }
+    else if("ME".equalsIgnoreCase(major)){
+        majors.setSelectedIndex(5);
+    }
+    else{
+        majors.setSelectedIndex(6);
+    }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -46,7 +46,7 @@ public class UpdateStudentController implements ActionListener{
         }
         if (ae.getActionCommand().equalsIgnoreCase("OK")){ 
             String studentID = view.getStudentID();
-            ArrayList<Student> studList = model.getList();
+            ArrayList<Student> studList = model.getStudentArrayList();
             Boolean studentIDExist = false;
             for(Student stud: studList){
                 if(stud.getStudentID().equalsIgnoreCase(studentID)){
@@ -127,7 +127,7 @@ public class UpdateStudentController implements ActionListener{
         StudentDetails v= new StudentDetails(null, true);
         v.setStudentID(Studentid.getStudentID());
         v.setSurname(Studentid.getSurname());
-        v.setFirstName(Studentid.getFirstname());
+        v.setFirstname(Studentid.getFirstname());
         v.setGPA(Studentid.getGPA());
         v.setMajor(Studentid.getProgram());
         v.setAdmissionYear(Studentid.getadmissionYear());

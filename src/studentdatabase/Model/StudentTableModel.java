@@ -187,7 +187,7 @@ public class StudentTableModel extends AbstractTableModel {
                 st.setSurname(rs.getString(3));
                 st.setadmissionYear(Integer.valueOf(rs.getString(4)));
                 st.setgpa(Float.valueOf(rs.getString(5)));
-                st.setProgram(Major.valueOf(rs.getString(6)));
+                st.setProgram(rs.getString(6));
 
                 sList.add(st);
             }

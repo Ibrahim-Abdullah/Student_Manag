@@ -62,12 +62,12 @@ public class Student {
     public void setgpa(float gpa){
         this.GPA = gpa;
     }
-    public Major getProgram(){
-        return this.program;
+    public String getProgram(){
+        return this.program.toString();
     }
     
-    public void setProgram(Major program){
-        this.program = program;
+    public void setProgram(String program){
+        this.program = Major.valueOf(program);
     }
     public String toStrings() {
      String data = studentID + " " + firstName + " " + surname + " " + admissionYear + " " + GPA + " " + program + "\n";
