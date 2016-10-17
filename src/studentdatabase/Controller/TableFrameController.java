@@ -56,7 +56,8 @@ public class TableFrameController implements ActionListener{
             StudentTableModel m=StudentTableModel.getInstance();
             StudentDetails v= new StudentDetails(null, true);            
             AddStudentController cntroller= new AddStudentController(m,v);            
-            cntroller.control();            
+            cntroller.control();
+            tableView.dispose();
             v.setVisible(true);
             
         }
@@ -83,6 +84,7 @@ public class TableFrameController implements ActionListener{
             UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);
             DeleteRecordController cntroller= new DeleteRecordController(m,v); 
             cntroller.control();
+            tableView.dispose();
             v.setVisible(true);
         }
         

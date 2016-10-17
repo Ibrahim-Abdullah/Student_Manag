@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import studentdatabase.View.StudentDetails;
 import studentdatabase.Model.StudentTableModel;  
 import studentdatabase.Model.Student;
+import studentdatabase.View.TableFrame;
 
 /**
  *
@@ -20,10 +21,12 @@ public class AddStudentController implements ActionListener{
     
     StudentDetails view; 
     StudentTableModel model;
+    //TableFrame tf;
 
     public AddStudentController( StudentTableModel studentTableModel,StudentDetails addStudentForm) {
         view =addStudentForm;
-        model= studentTableModel;        
+        model= studentTableModel;
+        //this.tf = tf;        
     }
     public void control(){
         view.getAddButton().addActionListener(this);
@@ -35,7 +38,11 @@ public class AddStudentController implements ActionListener{
     public void actionPerformed(ActionEvent ae) {            
         if (ae.getSource()==view.getCloseButton() )
         {               
-            view.dispose();
+        view.dispose();
+        StudentTableModel m=model.getInstance();
+        TableFrame v= new TableFrame();
+        TableFrameController tvc= new TableFrameController(m,v);
+        tvc.control();
         }
         if (ae.getActionCommand().equalsIgnoreCase("Add"))
         {     

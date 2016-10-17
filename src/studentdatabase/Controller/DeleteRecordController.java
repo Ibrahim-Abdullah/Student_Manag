@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import studentdatabase.Model.Student;
 import studentdatabase.Model.StudentTableModel;
 import studentdatabase.View.StudentDetails;
+import studentdatabase.View.TableFrame;
 import studentdatabase.View.UpdatedialoguePopUp;
 
 /**
@@ -46,6 +47,10 @@ public class DeleteRecordController implements ActionListener{
                     if(dialogResult == JOptionPane.YES_OPTION){
                         model.deleteRecord(studentID);
                         view.setVisible(false);
+                        StudentTableModel m=model.getInstance();
+                        TableFrame v= new TableFrame();
+                        TableFrameController tvc= new TableFrameController(m,v);
+                        tvc.control();
                     }
                     studentIDExist = true;
                     break;

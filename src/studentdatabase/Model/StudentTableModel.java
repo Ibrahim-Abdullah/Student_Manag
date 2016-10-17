@@ -114,7 +114,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
 
             PreparedStatement ps = con.prepareStatement("Insert into studentdata set StudentID=?, firstName=?, Surname=?, AdmissionYear=?, "
                     + "GPA=?, Program=?");
@@ -139,7 +139,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
             PreparedStatement ps = con.prepareStatement("update studentdata  set StudentID=?, firstName=?, Surname=?, AdmissionYear=?,"
                     + "GPA=?, Program=?");
             ps.setString(1, id);
@@ -162,7 +162,7 @@ public class StudentTableModel extends AbstractTableModel {
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("delete from studentdata where StudentID=?");
                     ps.setString(1, stId);
                     System.out.println("Success: " + ps.execute());
@@ -179,7 +179,7 @@ public class StudentTableModel extends AbstractTableModel {
             Connection conn = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
 
             Statement s = conn.createStatement();
 
