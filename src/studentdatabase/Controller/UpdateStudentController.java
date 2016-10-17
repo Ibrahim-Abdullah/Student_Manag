@@ -14,6 +14,7 @@ import studentdatabase.Model.StudentTableModel;
 import studentdatabase.View.StudentDetails;
 import studentdatabase.View.UpdatedialoguePopUp;
 import studentdatabase.Controller.AddStudentController;
+import studentdatabase.View.TableFrame;
 
 /**
  *
@@ -22,14 +23,15 @@ import studentdatabase.Controller.AddStudentController;
 public class UpdateStudentController implements ActionListener{
     
     UpdatedialoguePopUp view;
-    StudentDetails view2; 
+    //StudentDetails view2; 
     StudentTableModel model;
-    //I have not been consistent in view & model naming. 
-    //should be addNewForm etc.
-    public UpdateStudentController(StudentTableModel studentTabelModel, UpdatedialoguePopUp updateForm,StudentDetails addStudentForm){
+    TableFrame tf;
+
+    public UpdateStudentController(StudentTableModel studentTabelModel, UpdatedialoguePopUp updateForm,TableFrame tf){
         view =updateForm;
         model= studentTabelModel; 
-        view2 = addStudentForm;
+        //view2 = addStudentForm;
+        this.tf = tf;
     }
     
     public void control(){
@@ -40,7 +42,7 @@ public class UpdateStudentController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource()==view.getCloseButton() ){               
-            view.dispose();
+            view.setVisible(false);
         }
         if (ae.getActionCommand().equalsIgnoreCase("OK")){ 
             String studentID = view.getStudentID();
@@ -61,9 +63,8 @@ public class UpdateStudentController implements ActionListener{
     }
     private void validateUpdateRecord(Student Studentid){
         StudentDetails v= new StudentDetails(null, true);
-        AddStudentController asc =  new AddStudentController(model,v);
-        //v.getUpdateButton().addActionListener(asc);
-        //v.getCloseButton().addActionListener(asc);
+        StudentTableModel m = new StudentTableModel();
+        AddStudentController asc =  new AddStudentController(m,v);
         asc.control();
         v.setStudentID(Studentid.getStudentID());
         v.setSurname(Studentid.getSurname());
@@ -72,6 +73,7 @@ public class UpdateStudentController implements ActionListener{
         v.setMajor(Studentid.getProgram());
         v.setAdmissionYear(Studentid.getadmissionYear());
         view.setVisible(false);
+        tf.setVisible(false);
         v.setVisible(true);
     }
 }

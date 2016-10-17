@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import studentdatabase.Model.Student;
 import studentdatabase.Model.StudentTableModel;
-import studentdatabase.View.StudentDetails;
 import studentdatabase.View.TableFrame;
 import studentdatabase.View.UpdatedialoguePopUp;
 
@@ -22,10 +21,12 @@ import studentdatabase.View.UpdatedialoguePopUp;
 public class DeleteRecordController implements ActionListener{
     UpdatedialoguePopUp view;
     StudentTableModel model;
+    TableFrame tf;
     
-    public DeleteRecordController(StudentTableModel studentTableModel,UpdatedialoguePopUp updatePopUp ){
+    public DeleteRecordController(StudentTableModel studentTableModel,UpdatedialoguePopUp updatePopUp, TableFrame tf ){
         view = updatePopUp;
         model = studentTableModel;
+        this.tf = tf;
     }
     
     public void control(){
@@ -47,10 +48,11 @@ public class DeleteRecordController implements ActionListener{
                     if(dialogResult == JOptionPane.YES_OPTION){
                         model.deleteRecord(studentID);
                         view.setVisible(false);
-                        StudentTableModel m=model.getInstance();
+                        tf.setVisible(false);
+                        StudentTableModel m= new StudentTableModel();
                         TableFrame v= new TableFrame();
                         TableFrameController tvc= new TableFrameController(m,v);
-                        tvc.control();
+                        tvc.control();      
                     }
                     studentIDExist = true;
                     break;

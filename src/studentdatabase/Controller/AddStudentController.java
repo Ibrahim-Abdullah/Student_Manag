@@ -65,7 +65,7 @@ public class AddStudentController implements ActionListener{
         }
     }
         if (ae.getActionCommand().equalsIgnoreCase("Update")){
-            Boolean success = fieldValidation();
+            boolean success = fieldValidation();
             if(success){
                 String sID = view.getStudentID();
                 String fName = view.getFirstname();
@@ -76,8 +76,16 @@ public class AddStudentController implements ActionListener{
                 model.updateRecord(sID, fName,sName,yAdmission,gpA, programOfStudy); 
             JOptionPane.showMessageDialog(null,"Student record has been Updated Succesfully");
             view.resetField();
+            view.dispose();
+            StudentTableModel m= new StudentTableModel();
+            TableFrame v= new TableFrame();
+            TableFrameController tvc= new TableFrameController(m,v);
+            tvc.control();
         }
-        }
+        else{
+            JOptionPane.showMessageDialog(null,"Student record update was unsuccesful");
+            }
+    }
  }
     
  private Boolean fieldValidation(){
@@ -118,9 +126,6 @@ public class AddStudentController implements ActionListener{
             if(view.getMajor().toString().equalsIgnoreCase("Select Program of Study")){
                 success = false;
                 JOptionPane.showMessageDialog(null,"Select Program of Study");
-            }
-            else{
-                success = true;
             }
         }
         catch(NumberFormatException e){

@@ -73,18 +73,17 @@ public class TableFrameController implements ActionListener{
         }
         if(ae.getActionCommand().equals("Edit")){
             StudentTableModel m=StudentTableModel.getInstance();
-            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);
-            StudentDetails sd = new StudentDetails(null,true);
-            UpdateStudentController cntroller= new UpdateStudentController(m,v,sd);            
+            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null,true);
+            //StudentDetails sd = new StudentDetails(null,true);
+            UpdateStudentController cntroller= new UpdateStudentController(m,v,tableView);            
             cntroller.control();            
             v.setVisible(true);
         }
         if (ae.getActionCommand().equals("Delete")){
             StudentTableModel m=StudentTableModel.getInstance();
             UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);
-            DeleteRecordController cntroller= new DeleteRecordController(m,v); 
+            DeleteRecordController cntroller= new DeleteRecordController(m,v,tableView); 
             cntroller.control();
-            tableView.dispose();
             v.setVisible(true);
         }
         
