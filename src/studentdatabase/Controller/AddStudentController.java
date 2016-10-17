@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import studentdatabase.View.StudentDetails;
 import studentdatabase.Model.StudentTableModel;  
-import studentdatabase.Model.Student;
 import studentdatabase.View.TableFrame;
 
 /**
@@ -56,9 +55,15 @@ public class AddStudentController implements ActionListener{
             float gpA = Float.parseFloat(view.getGPA());
             String programOfStudy = view.getMajor();
             
-            model.addRecord(sID,fName,sName, yAdmission, gpA, programOfStudy);
-            JOptionPane.showMessageDialog(null,"Student record succesfully inserted");
+            boolean insertResult;
+            insertResult = model.addRecord(sID,fName,sName, yAdmission, gpA, programOfStudy);
+            if(!insertResult){
+            JOptionPane.showMessageDialog(null,"Student record succesfully Added");
             view.resetField();
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Student Record could not be added");
+            }
         }
         else{
             JOptionPane.showMessageDialog(null,"Student Record NOT inserted");
@@ -73,14 +78,19 @@ public class AddStudentController implements ActionListener{
                 int yAdmission = Integer.parseInt(view.getAdmissionYear());
                 float gpA = Float.parseFloat(view.getGPA());
                 String programOfStudy = view.getMajor();
-                model.updateRecord(sID, fName,sName,yAdmission,gpA, programOfStudy); 
-            JOptionPane.showMessageDialog(null,"Student record has been Updated Succesfully");
-            view.resetField();
-            view.dispose();
-            StudentTableModel m= new StudentTableModel();
-            TableFrame v= new TableFrame();
-            TableFrameController tvc= new TableFrameController(m,v);
-            tvc.control();
+                int rowsAffected = model.updateRecord(sID, fName,sName,yAdmission,gpA, programOfStudy);
+                if(rowsAffected > 0){
+                JOptionPane.showMessageDialog(null,"Student record has been Updated Succesfully");
+                view.resetField();
+                view.dispose();
+                StudentTableModel m= new StudentTableModel();
+                TableFrame v= new TableFrame();
+                TableFrameController tvc= new TableFrameController(m,v);
+                tvc.control();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Student record could not be updated");
+                }
         }
         else{
             JOptionPane.showMessageDialog(null,"Student record update was unsuccesful");

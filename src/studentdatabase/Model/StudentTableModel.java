@@ -109,7 +109,7 @@ public class StudentTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col); //*works best with this
     }
 
-    public void addRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
+    public boolean addRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -124,34 +124,39 @@ public class StudentTableModel extends AbstractTableModel {
             ps.setInt(4, adYear);
             ps.setFloat(5, gpa);
             ps.setString(6, major);
-            System.out.println(ps.execute());
-            
+           boolean result = ps.execute();
+            ps.close();
+            con.close();
+            return result;
         } catch (Exception e) {
             System.out.println("Error " + e.toString());
-            return;
+            return true;
         }
         
-        sModel.fireTableDataChanged();
+        //sModel.fireTableDataChanged();
     }
 
-    public void updateRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
+    public int updateRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
                     "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
-            PreparedStatement ps = con.prepareStatement("update studentdata  set StudentID=?, firstName=?, Surname=?, AdmissionYear=?,"
-                    + "GPA=?, Program=?");
-            ps.setString(1, id);
-            ps.setString(2, fName);
-            ps.setString(3, sName);
-            ps.setInt(4, adYear);
-            ps.setFloat(5, gpa);
-            ps.setString(6,major);
-            ps.execute();
+            PreparedStatement ps = con.prepareStatement("update studentdata  set firstName=?, Surname=?, AdmissionYear=?,"
+                    + "GPA=?, Program=? where studentID="+ " '"+ id+" '");
+            //ps.setString(1, id);
+            ps.setString(1, fName);
+            ps.setString(2, sName);
+            ps.setInt(3, adYear);
+            ps.setFloat(4, gpa);
+            ps.setString(5,major);
+            int rowsAffected = ps.executeUpdate();
+            ps.close();
+            con.close();
+            return rowsAffected;
         } catch (Exception e) {
             System.out.println("Error " + e.toString());
-            return;
+            return 0;
         }
     }
 
@@ -206,6 +211,8 @@ public class StudentTableModel extends AbstractTableModel {
 
                 sList.add(st);
             }
+            rs.close();
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
