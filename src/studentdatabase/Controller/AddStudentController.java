@@ -47,16 +47,7 @@ public class AddStudentController implements ActionListener{
             float gpA = Float.parseFloat(view.getGPA());
             String programOfStudy = view.getMajor();
             
-            Student newStudent = new Student();
-            
-            newStudent.setFirstname(fName);
-            newStudent.setStudentID(sID);
-            newStudent.setSurname(sName);
-            newStudent.setProgram(programOfStudy);
-            newStudent.setgpa(gpA);
-            newStudent.setadmissionYear(yAdmission);
-            
-            //model.addToModel(newStudent);  
+            model.addRecord(sID,fName,sName, yAdmission, gpA, programOfStudy);
             JOptionPane.showMessageDialog(null,"Student record succesfully inserted");
             view.resetField();
         }

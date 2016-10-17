@@ -68,17 +68,17 @@ public class UpdateStudentController implements ActionListener{
                 int yAdmission = Integer.parseInt(view2.getAdmissionYear());
                 float gpA = Float.parseFloat(view2.getGPA());
                 String programOfStudy = view2.getMajor();
-            
-                Student newStudent = new Student();
-            
-                newStudent.setFirstname(fName);
-                newStudent.setStudentID(sID);
-                newStudent.setSurname(sName);
-                newStudent.setProgram(programOfStudy);
-                newStudent.setgpa(gpA);
-                newStudent.setadmissionYear(yAdmission);
-            
-            //model.addToModel(newStudent);  
+                 model.updateRecord(sID, fName,sName,yAdmission,gpA, programOfStudy);
+//                Student newStudent = new Student();
+//            
+//                newStudent.setFirstname(fName);
+//                newStudent.setStudentID(sID);
+//                newStudent.setSurname(sName);
+//                newStudent.setProgram(programOfStudy);
+//                newStudent.setgpa(gpA);
+//                newStudent.setadmissionYear(yAdmission);
+//            
+//            //model.addToModel(newStudent);  
             JOptionPane.showMessageDialog(null,"Student record has been Updated Succesfully");
             view2.resetField();
         }

@@ -97,7 +97,7 @@ public class StudentTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col); //*works best with this
     }
 
-    public void addRecord(String id, String fName, String sName, int adYear, float gpa, Major major) {
+    public void addRecord(String id, String fName, String sName, int adYear, float gpa, String major) {
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -111,7 +111,7 @@ public class StudentTableModel extends AbstractTableModel {
             ps.setString(3, sName);
             ps.setInt(4, adYear);
             ps.setFloat(5, gpa);
-            ps.setString(6, String.valueOf(major));
+            ps.setString(6, major);
             System.out.println(ps.execute());
         } catch (Exception e) {
             System.out.println("Error " + e.toString());
