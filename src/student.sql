@@ -7,6 +7,5 @@ FirstName varchar(20),
 Surname varchar(20),
 AdmissionYear integer,
 GPA float,
-Program varchar(30),
-primary key (StudentID)
-);
+Program varchar(30),PRIMARY KEY(StudentID 
+));

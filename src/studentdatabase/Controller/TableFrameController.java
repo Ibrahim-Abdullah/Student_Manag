@@ -78,7 +78,13 @@ public class TableFrameController implements ActionListener{
             cntroller.control();            
             v.setVisible(true);
         }
-        
+        if (ae.getActionCommand().equals("Delete")){
+            StudentTableModel m=StudentTableModel.getInstance();
+            UpdatedialoguePopUp v= new UpdatedialoguePopUp(null, true);
+            DeleteRecordController cntroller= new DeleteRecordController(m,v); 
+            cntroller.control();
+            v.setVisible(true);
+        }
         
     }
 }

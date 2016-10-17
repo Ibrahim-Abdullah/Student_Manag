@@ -28,6 +28,7 @@ public class AddStudentController implements ActionListener{
     public void control(){
         view.getAddButton().addActionListener(this);
         view.getCloseButton().addActionListener(this);
+        view.getUpdateButton().addActionListener(this);
     }
 
     @Override
@@ -55,6 +56,20 @@ public class AddStudentController implements ActionListener{
             JOptionPane.showMessageDialog(null,"Student Record NOT inserted");
         }
     }
+        if (ae.getActionCommand().equalsIgnoreCase("Update")){
+            Boolean success = fieldValidation();
+            if(success){
+                String sID = view.getStudentID();
+                String fName = view.getFirstname();
+                String sName = view.getSurname();
+                int yAdmission = Integer.parseInt(view.getAdmissionYear());
+                float gpA = Float.parseFloat(view.getGPA());
+                String programOfStudy = view.getMajor();
+                model.updateRecord(sID, fName,sName,yAdmission,gpA, programOfStudy); 
+            JOptionPane.showMessageDialog(null,"Student record has been Updated Succesfully");
+            view.resetField();
+        }
+        }
  }
     
  private Boolean fieldValidation(){
